@@ -58,13 +58,14 @@ public class Menu {
         int multiplicacion=num1*num2;
         System.out.println("el resultado de la multipliacion"+multiplicacion);
     }
-    public static void division(Scanner intro,int nume1, int nume2){
+    public static void division(Scanner intro,int num1, int num2){
         System.out.println("ingrese numeros");
-        nume1=intro.nextInt();
-        nume2=intro.nextInt();
-        double div=(double)(nume1/nume2);
+        num1=intro.nextInt();
+        num2=intro.nextInt();
+        double div=(double)(num1/num2);
         System.out.println("el resultado de la division es:"+div);
     }
+    
     public static void salir(Scanner intro,int num1){
         System.out.println("quiere salir");
         System.out.println("1:(si) y 2:(no)");
