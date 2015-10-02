@@ -1,6 +1,7 @@
 
 package menu;
 
+
 import java.util.Scanner;
 
 public class Menu {
@@ -17,7 +18,11 @@ public class Menu {
             System.out.println("5: porcentaje");
             System.out.println("6: el numero mayor");
             System.out.println("7: salir");
+           
             opc= intro.nextInt();
+           
+            
+            
             switch (opc){
                 case 1:
                     suma(intro,num1,num2);
@@ -43,7 +48,7 @@ public class Menu {
                   
             }
             
-        }while(opc!=6);
+        }while(opc!=7);
     }
     public static void suma(Scanner intro,int num1, int num2){
         System.out.println("ingrese numeros");
@@ -70,6 +75,16 @@ public class Menu {
         System.out.println("ingrese numeros");
         num1=intro.nextInt();
         num2=intro.nextInt();
+        while(num2==0){
+        try {
+        double div=(double)(num1/0) ;
+        }catch(ArithmeticException a){
+            System.out.println("una excepcion: no se puede dividir por cero"+a);     
+        }
+            System.out.println("ingrese un numero que no sea cero");
+            num1=intro.nextInt();
+            num2=intro.nextInt();
+        }
         double div=(double)(num1/num2);
         System.out.println("el resultado de la division es:"+div);
     }
