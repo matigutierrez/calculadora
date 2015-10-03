@@ -33,10 +33,12 @@ public class Menu {
             }catch(InputMismatchException a){
                 System.out.println("\t error de tipo"+ a);
                     intro.nextLine();
-                    System.out.println("Sólo se aceptan valores numéricos");
+                    System.out.println("ingrese sólo valores numéricos");
             }
             }while(ciclo);
             ciclo = true;
+            do{
+            try{
             switch (opc){
                 case 1:
                     suma(intro,num1,num2);
@@ -61,7 +63,13 @@ public class Menu {
                     break;
                   
             }
-            
+            ciclo =false;
+            }catch(InputMismatchException a){
+                System.err.printf("\t error de tipo"+a);
+                    intro.nextLine();
+                    System.out.println("ingrese sólo valores numéricos"); 
+            }
+            }while(ciclo);
         }while(opc!=7);
     }
     public static void suma(Scanner intro,int num1, int num2){
