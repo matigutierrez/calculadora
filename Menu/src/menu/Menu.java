@@ -2,15 +2,20 @@
 package menu;
 
 
+
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Menu {
     
     public static void menuu(Scanner intro){
-        int opc;
+        int opc = 0;
         int num1=0;
         int num2=0;
+        boolean ciclo=true;
         do{
+            do{
+            System.out.println("eliga que operacion desea");    
             System.out.println("1: sumar numeros");
             System.out.println("2: restar numeros");
             System.out.println("3: multiplicar numeros");
@@ -18,11 +23,20 @@ public class Menu {
             System.out.println("5: porcentaje");
             System.out.println("6: el numero mayor");
             System.out.println("7: salir");
-           
+            try{
             opc= intro.nextInt();
-           
-            
-            
+            while(opc>7 || opc<1){
+                System.out.println("ingrese un numero entre 1 y 7");
+                opc= intro.nextInt();
+            }
+            ciclo = false;
+            }catch(InputMismatchException a){
+                System.out.println("\t error de tipo"+ a);
+                    intro.nextLine();
+                    System.out.println("Sólo se aceptan valores numéricos");
+            }
+            }while(ciclo);
+            ciclo = true;
             switch (opc){
                 case 1:
                     suma(intro,num1,num2);
@@ -51,6 +65,7 @@ public class Menu {
         }while(opc!=7);
     }
     public static void suma(Scanner intro,int num1, int num2){
+        
         System.out.println("ingrese numeros");
         num1=intro.nextInt();
         num2=intro.nextInt();
