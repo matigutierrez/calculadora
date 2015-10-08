@@ -1,6 +1,7 @@
 
 package javaapplication61;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class JavaApplication61 {
@@ -9,21 +10,43 @@ public class JavaApplication61 {
         int opc = 0;
         int num1 = 0;
         int num2 = 0;
+        boolean ciclo=true;
         
-        System.out.println("eliga que operacion desea");    
-        System.out.println("1: sumar numeros");
-        System.out.println("2: restar numeros");
-        System.out.println("3: multiplicar numeros");
-        System.out.println("4: dividir numeros");
-        System.out.println("5: porcentaje (numero y porcentaje a calcular)");
-        System.out.println("6: el numero mayor");
-        System.out.println("7: salir");
-        opc= intro.nextInt();
-        if (opc!=7){
-        System.out.println("ingrese dos numero ");
-        num1=intro.nextInt();
-        num2=intro.nextInt();
-        }
+        do{
+          do {
+            System.out.println("eliga que operacion desea");    
+            System.out.println("1: sumar numeros");
+            System.out.println("2: restar numeros");
+            System.out.println("3: multiplicar numeros");
+            System.out.println("4: dividir numeros");
+            System.out.println("5: porcentaje (numero y porcentaje a calcular)");
+            System.out.println("6: el numero mayor");
+            System.out.println("7: salir");
+            try {
+            opc= intro.nextInt();
+            while(opc>7 || opc<1){
+                System.out.println("ingrese un numero entre 1 y 7");
+                opc= intro.nextInt();
+            }
+            if (opc!=7){   
+               System.out.println("ingrese dos numero ");
+               num1=intro.nextInt();
+               num2=intro.nextInt(); 
+                 if (opc==4 && num2==0){
+                     System.out.println("ingrese numero mayor que cero ");
+                     num1=intro.nextInt();
+                     num2=intro.nextInt();
+                 }
+            }
+            
+            ciclo = false;
+            }catch(InputMismatchException a){
+              System.out.println("\t error de tipo"+ a);
+                    intro.nextLine();
+                    System.out.println("ingrese sólo valores numéricos");
+            }
+            }while(ciclo);
+            ciclo = true;
         
             switch (opc){
                 
@@ -60,6 +83,7 @@ public class JavaApplication61 {
                 case 7:
                      salir(intro,num1);
             }
+        }while(opc!=7);
             
     }
     public static int sumar(int num1, int num2){
